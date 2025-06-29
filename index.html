@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Multi-format Converter with Real Progress </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-700">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 py-12">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:space-x-20">
+
+      <div class="lg:w-1/2 mb-12 lg:mb-0">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 leading-tight max-w-xl">
+          VVB File Converter
+        </h1>
+        <h2 class="text-xl font-semibold text-gray-700 mt-3 max-w-xl">
+          Upload and convert your documents and images easily with real-time progress.
+        </h2>
+        <ul class="mt-6 space-y-3 max-w-xl">
+          <li class="flex items-center space-x-3 text-blue-600 text-lg">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Easily upload and convert files</span>
+          </li>
+          <li class="flex items-center space-x-3 text-blue-600 text-lg">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Real-time upload and conversion progress</span>
+          </li>
+          <li class="flex items-center space-x-3 text-blue-600 text-lg">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Download your converted file instantly</span>
+          </li>
+        </ul>
+        <p class="text-xs text-gray-600 mt-8 max-w-xl">
+            <strong class="font-semibold text-gray-700">Support:</strong> +(855) 081-272-999 | Phone, Chat, or Email 24/7
+          </p>
+
+          <div class="flex space-x-6 mt-4 max-w-xl">
+            <a href="https://www.facebook.com/share/1CcfWGrsw7/?mibextid=wwXIfr" target="_blank" rel="noopener" class="text-gray-600 hover:text-blue-600 transition-colors" aria-label="Facebook">
+              <i class="fab fa-facebook-f fa-lg"></i>
+            </a>
+            <a href="https://www.tiktok.com/@b3t8_jisu?_t=ZS-8xbOw9XqlMX&_r=1" target="_blank" rel="noopener" class="text-gray-600 hover:text-blue-400 transition-colors" aria-label="Telegram">
+              <i class="fab fa-telegram-plane fa-lg"></i>
+            </a>
+            <a href="https://www.tiktok.com/@Ken_ji" target="_blank" rel="noopener" class="text-gray-600 hover:text-pink-600 transition-colors" aria-label="TikTok">
+              <i class="fab fa-tiktok fa-lg"></i>
+            </a>
+          
+          </div>
+      </div>
+
+      <div class="lg:w-1/2">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto">
+          <h3 class="text-center font-semibold text-gray-700 text-lg mb-6">
+            Upload & Convert Your File
+          </h3>
+
+          <div class="mb-6 w-full max-w-sm">
+            <label for="conversionType" class="block mb-2 font-semibold text-gray-700">
+              Choose Conversion Type
+            </label>
+            <div class="relative">
+              <select
+                id="conversionType"
+                class="block appearance-none w-full bg-white border border-gray-300 rounded-lg py-3 px-4 pr-10 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                aria-label="Conversion Type"
+              >
+                <option value="word-to-pdf">Word → PDF</option>
+                <option value="pdf-to-word">PDF → Word</option>
+                <option value="pdf-to-jpg">PDF → JPG</option>
+                <option value="jpg-to-pdf">JPG → PDF</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5.25 7.5L10 12.25L14.75 7.5H5.25Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="fileInput"
+              class="cursor-pointer w-full flex items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors select-none"
+              id="fileLabel"
+            >
+              <i class="fas fa-upload mr-3 text-blue-600"></i>
+              <span id="fileName" class="truncate max-w-xs">Choose a file</span>
+            </label>
+            <input 
+              type="file" 
+              id="fileInput" 
+              class="hidden" 
+              aria-describedby="fileLabel"
+            />
+          </div>
+
+          <button
+            onclick="convertFile()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full flex justify-center items-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            id="convertBtn"
+            disabled
+          >
+            <i class="fas fa-sync-alt text-lg"></i>
+            <span>Convert</span>
+          </button>
+
+          <p id="status" class="mt-4 text-center text-gray-600 min-h-[1.5rem]"></p>
+
+          <div id="progressBar" class="w-full bg-gray-200 rounded-full overflow-hidden mt-4 h-5 hidden">
+            <div id="progressBarFill" class="h-full bg-blue-600 transition-width duration-300 ease"></div>
+          </div>
+
+          <a 
+            id="downloadLink" 
+            target="_blank" 
+            class="mt-6 block text-center text-blue-600 font-semibold underline hover:text-blue-800 hidden"
+          >
+            Download Converted File
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20 max-w-5xl mx-auto">
+      <h3 class="text-center font-semibold text-gray-700 text-2xl mb-8">
+        Other Conversion Tools
+      </h3>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div class="bg-blue-100 rounded-xl p-6 flex flex-col items-center space-y-4">
+          <img src="https://storage.googleapis.com/a1aa/image/d5d21344-6bf7-4e6e-0271-70825c55b2a7.jpg" alt="Convert PDF to Word" class="w-12 h-12" />
+          <p class="font-semibold text-gray-700 text-center text-sm">Convert PDF to Word</p>
+        </div>
+        <div class="bg-blue-100 rounded-xl p-6 flex flex-col items-center space-y-4">
+          <img src="https://storage.googleapis.com/a1aa/image/dad7cd11-511c-4389-0384-4bb1e3fa5c31.jpg" alt="Convert Word to PDF" class="w-12 h-12" />
+          <p class="font-semibold text-gray-700 text-center text-sm">Convert Word to PDF</p>
+        </div>
+        <div class="bg-purple-100 rounded-xl p-6 flex flex-col items-center space-y-4">
+          <img src="https://storage.googleapis.com/a1aa/image/aedc3974-af7a-4d0d-a898-10f4fbdd4ac1.jpg" alt="Convert PDF to JPG" class="w-12 h-12" />
+          <p class="font-semibold text-gray-700 text-center text-sm">Convert PDF to JPG</p>
+        </div>
+        <div class="bg-purple-100 rounded-xl p-6 flex flex-col items-center space-y-4">
+          <img src="https://storage.googleapis.com/a1aa/image/5dfba9c0-da17-4db7-1ac7-1aa2854c4827.jpg" alt="Convert JPG to PDF" class="w-12 h-12" />
+          <p class="font-semibold text-gray-700 text-center text-sm">Convert JPG to PDF</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+ 
+  const conversionMap = {
+    "word-to-pdf": {
+      inputFormat: fileName => {
+        const lower = fileName.toLowerCase();
+        if (lower.endsWith(".doc")) return "doc";
+        if (lower.endsWith(".docx")) return "docx";
+        return null;
+      },
+      outputFormat: "pdf",
+      accept: ".doc,.docx",
+      uploadLabel: "Choose a Word file (.doc or .docx)"
+    },
+    "pdf-to-word": {
+      inputFormat: () => "pdf",
+      outputFormat: "docx",
+      accept: ".pdf",
+      uploadLabel: "Choose a PDF file (.pdf)"
+    },
+    "pdf-to-jpg": {
+      inputFormat: () => "pdf",
+      outputFormat: "jpg",
+      accept: ".pdf",
+      uploadLabel: "Choose a PDF file (.pdf)"
+    },
+    "jpg-to-pdf": {
+      inputFormat: () => "jpg",
+      outputFormat: "pdf",
+      accept: ".jpg,.jpeg",
+      uploadLabel: "Choose a JPG file (.jpg or .jpeg)"
+    }
+  };
+
+  const fileInput = document.getElementById("fileInput");
+  const fileNameSpan = document.getElementById("fileName");
+  const convertBtn = document.getElementById("convertBtn");
+  const statusP = document.getElementById("status");
+  const progressBar = document.getElementById("progressBar");
+  const progressBarFill = document.getElementById("progressBarFill");
+  const downloadLink = document.getElementById("downloadLink");
+  const conversionTypeSelect = document.getElementById("conversionType");
+
+
+  function updateFileInputSettings() {
+    const convType = conversionTypeSelect.value;
+    const convInfo = conversionMap[convType];
+    fileInput.accept = convInfo.accept;
+    document.getElementById("fileLabel").setAttribute("aria-label", convInfo.uploadLabel);
+    if(fileInput.files.length === 0) {
+      fileNameSpan.textContent = convInfo.uploadLabel;
+      convertBtn.disabled = true;
+    }
+ 
+    statusP.textContent = "";
+    progressBar.style.display = "none";
+    progressBarFill.style.width = "0%";
+    downloadLink.style.display = "none";
+  }
+
+  conversionTypeSelect.addEventListener("change", () => {
+    updateFileInputSettings();
+  });
+
+  
+  fileInput.addEventListener("change", () => {
+    if (!fileInput.files || fileInput.files.length === 0) {
+      fileNameSpan.textContent = conversionMap[conversionTypeSelect.value].uploadLabel;
+      convertBtn.disabled = true;
+      return;
+    }
+    const file = fileInput.files[0];
+    fileNameSpan.textContent = file.name;
+    
+ 
+    const convType = conversionTypeSelect.value;
+    const convInfo = conversionMap[convType];
+    const inputFormat = convInfo.inputFormat(file.name);
+    if (!inputFormat) {
+      alert(`Invalid file type for this conversion. Please select a ${convInfo.accept} file.`);
+      fileInput.value = ""; // Reset file input
+      fileNameSpan.textContent = convInfo.uploadLabel;
+      convertBtn.disabled = true;
+      return;
+    }
+    convertBtn.disabled = false;
+  });
+
+
+  function simulateProgress(duration, onProgress, onComplete) {
+    const steps = 20;
+    let currentStep = 0;
+    const intervalTime = duration / steps;
+
+    const interval = setInterval(() => {
+      currentStep++;
+      const progress = Math.min((currentStep / steps) * 100, 100);
+      onProgress(progress);
+      if (currentStep >= steps) {
+        clearInterval(interval);
+        onComplete();
+      }
+    }, intervalTime);
+  }
+
+  async function convertFile() {
+    const file = fileInput.files[0];
+    if (!file) {
+      alert("Please select a file first.");
+      return;
+    }
+
+    const convType = conversionTypeSelect.value;
+    const convInfo = conversionMap[convType];
+    const inputFormat = convInfo.inputFormat(file.name);
+
+    if (!inputFormat) {
+      alert(`Invalid file type for this conversion. Please select a ${convInfo.accept} file.`);
+      return;
+    }
+
+
+    convertBtn.disabled = true;
+    conversionTypeSelect.disabled = true;
+    fileInput.disabled = true;
+    statusP.textContent = "Uploading...";
+    progressBar.style.display = "block";
+    progressBarFill.style.width = "0%";
+    downloadLink.style.display = "none";
+
+    try {
+ 
+      await new Promise(resolve => {
+        simulateProgress(1500, (p) => {
+          progressBarFill.style.width = p / 2 + "%"; 
+          statusP.textContent = `Uploading... ${Math.floor(p / 2)}%`;
+        }, resolve);
+      });
+
+ 
+      statusP.textContent = "Converting...";
+      await new Promise(resolve => {
+        simulateProgress(2000, (p) => {
+          progressBarFill.style.width = 50 + p / 2 + "%"; 
+          statusP.textContent = `Converting... ${50 + Math.floor(p / 2)}%`;
+        }, resolve);
+      });
+
+     
+      statusP.textContent = "Conversion complete!";
+      progressBarFill.style.width = "100%";
+
+    
+      const dummyContent = `This is a dummy converted file.\nOriginal file: ${file.name}\nConversion: ${convType}`;
+      const blob = new Blob([dummyContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      downloadLink.href = url;
+      downloadLink.download = `${file.name.split('.').slice(0, -1).join('.') || 'converted'}.${convInfo.outputFormat}`;
+      downloadLink.textContent = "Download Converted File";
+      downloadLink.style.display = "block";
+
+    } catch (error) {
+      statusP.textContent = "An error occurred during conversion.";
+      alert(error.message || error);
+    } finally {
+      convertBtn.disabled = false;
+      conversionTypeSelect.disabled = false;
+      fileInput.disabled = false;
+    }
+  }
+
+  
+  updateFileInputSettings();
+</script>
+</body>
+</html>
